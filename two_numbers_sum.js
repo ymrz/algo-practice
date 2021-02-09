@@ -8,7 +8,7 @@
 // target sum.
 
 //o(n^2) time | O(1) space
-
+//_____________________________________________________
 // function twoNumberSum(arr, targetSum) {
 //   for (let i = 0; i < arr.length; i++) {
 //     const firstNum = arr[i];
@@ -24,22 +24,40 @@
 //   return [];
 // }
 
+//O(nlog(n)) time | O(1) space
+//______________________________________________
+// function twoNumberSum(arr, targetSum) {
+//   arr.sort((a, b) => a - b);
+//   let leftPointer = 0;
+//   let rightPointer = arr.length - 1;
+
+//   while (leftPointer < rightPointer) {
+//     const currentSum = arr[leftPointer] + arr[rightPointer];
+
+//     if (currentSum === targetSum) {
+//       return [arr[leftPointer], arr[rightPointer]];
+//     } else if (currentSum < targetSum) {
+//       leftPointer++;
+//     } else if (currentSum > targetSum) {
+//       rightPointer--;
+//     }
+//   }
+//   return [];
+// }
+
 function twoNumberSum(arr, targetSum) {
-  arr.sort((a, b) => a - b);
-  let leftPointer = 0;
-  let rightPointer = arr.length - 1;
+  const nums = {};
 
-  while (leftPointer < rightPointer) {
-    const currentSum = arr[leftPointer] + arr[rightPointer];
+  for (const num of arr) {
+    const potentialMatch = targetSum - num;
 
-    if (currentSum === targetSum) {
-      return [arr[leftPointer], arr[rightPointer]];
-    } else if (currentSum < targetSum) {
-      leftPointer++;
-    } else if (currentSum > targetSum) {
-      rightPointer--;
+    if (potentialMatch in nums) {
+      return [potentialMatch, num];
+    } else {
+      nums[num] = true;
     }
   }
   return [];
 }
+
 console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10));
