@@ -45,6 +45,8 @@
 //   return [];
 // }
 
+//O(n) time | O(n) space
+//____________________________________________
 function twoNumberSum(arr, targetSum) {
   const nums = {};
 
