@@ -12,6 +12,7 @@ function anagram(str1, str2) {
       ? (letterCounter[letter] += 1)
       : (letterCounter[letter] = 1);
   }
+  console.log(letterCounter);
 
   for (let i = 0; i < str2.length; i++) {
     let letter = str2[i];
